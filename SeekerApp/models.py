@@ -24,6 +24,31 @@ class Post(models.Model):
     name=models.ForeignKey(People, on_delete=models.CASCADE, related_name="post_owner")
     nid=models.CharField(max_length=30)
     image = models.ImageField(upload_to="post")
+    amount=models.DecimalField(max_digits=10, decimal_places=2)
     posted_on=models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.title
+
+class Payment(models.Model):
+    donor=models.ForeignKey(People, on_delete=models.CASCADE)
+    post=models.ForeignKey(Post, on_delete=models.CASCADE)
+    paid_amount=models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.post.title
+    def __donor__(self):
+        return self.donor.name.username
+    def __seeker__(self):
+        return self.post.name.name.get_username()
+
+class Account(models.Model):
+    depositor = models.ForeignKey(People, on_delete=models.CASCADE)
+    bank_name=models.CharField(max_length=200)
+    branch=models.CharField(max_length=200)
+    balance=models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.bank_name
+
+    def __depositor__(self):
+        return self.depositor.name.username
