@@ -10,3 +10,9 @@ html,
         background: #1C2331 !important;
       }
     }
+nav.navbar {
+    background: #1C2331;
+}
+.page-wrapper {
+    margin: 120px 0px;
+}

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+from django.contrib.messages import constants as messages
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'SeekerApp',
-    'PeopleApp'
+    'PeopleApp',
+    # Third party application
+    'crispy_forms',
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -137,3 +139,10 @@ STATIC_ROOT = os.path.dirname(os.path.join(BASE_DIR, 'static'))
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert alert-info alert-dismissible',
+    messages.INFO: 'alert alert-info alert-dismissible',
+    messages.SUCCESS: 'alert alert-success alert-dismissible',
+    messages.WARNING: 'alert alert-warning alert-dismissible',
+    messages.ERROR: 'alert alert-danger alert-dismissible',
+}

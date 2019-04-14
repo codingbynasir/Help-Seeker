@@ -11,6 +11,7 @@
     </style>
 {% endblock %}
 {% block content %}
+ {% load crispy_forms_tags %}
     <div class="wrapper">
         <div class="container">
             <div class="row">
@@ -20,7 +21,7 @@
                     <div class="card">
 
                       <h5 class="card-header info-color white-text text-center py-4">
-                        <strong>Log In</strong>
+                        <strong>Update profile</strong>
                       </h5>
 
                       <!--Card content-->
@@ -36,25 +37,21 @@
                             </div>
                         {% endif %}
                         <!-- Form -->
-                        <form action="" method="POST" class="text-center" style="color: #757575;">
+                        <form action="" method="POST" class="text-center" style="color: #757575;" enctype="multipart/form-data">
                             {% csrf_token %}
                           <!-- Email -->
+                          {% for f in form %}
                           <div class="md-form">
-                            <input type="text" name="username" id="id_username" class="form-control">
-                            <label for="id_username">Username</label>
+                            {{ f }}
+                            {{ f.label_tag }}
                           </div>
-
-                          <!-- Password -->
-                          <div class="md-form">
-                            <input type="password" name="password" id="id_password" class="form-control">
-                            <label for="id_password">Password</label>
-                          </div>
+                          {% endfor %}
                           <!-- Sign in button -->
-                          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0">Log In</button>
+                          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0">Update info</button>
 
                           <!-- Register -->
-                          <p>Not a member?
-                            <a href="{% url 'people:register' %}">Register</a>
+                          <p>
+                            <a href="{% url 'seeker:index' %}">Skip</a>
                           </p>
 
                         </form>
@@ -71,5 +68,10 @@
     </div>
 {% endblock %}
 {% block script %}
-
+<script>
+  $(document).ready(function() {
+      $('form input').addClass('form-control');
+      $('form select').addClass('form-control');
+    });
+</script>
 {% endblock %}

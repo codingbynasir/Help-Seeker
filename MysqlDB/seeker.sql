@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2019 at 03:49 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Apr 14, 2019 at 07:18 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auth_group` (
   `id` int(11) NOT NULL,
-  `name` varchar(80) NOT NULL
+  `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,18 +87,18 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (22, 'Can change session', 6, 'change_session'),
 (23, 'Can delete session', 6, 'delete_session'),
 (24, 'Can view session', 6, 'view_session'),
-(25, 'Can add people', 7, 'add_people'),
-(26, 'Can change people', 7, 'change_people'),
-(27, 'Can delete people', 7, 'delete_people'),
-(28, 'Can view people', 7, 'view_people'),
-(29, 'Can add post', 8, 'add_post'),
-(30, 'Can change post', 8, 'change_post'),
-(31, 'Can delete post', 8, 'delete_post'),
-(32, 'Can view post', 8, 'view_post'),
-(33, 'Can add payment', 9, 'add_payment'),
-(34, 'Can change payment', 9, 'change_payment'),
-(35, 'Can delete payment', 9, 'delete_payment'),
-(36, 'Can view payment', 9, 'view_payment'),
+(25, 'Can add payment', 7, 'add_payment'),
+(26, 'Can change payment', 7, 'change_payment'),
+(27, 'Can delete payment', 7, 'delete_payment'),
+(28, 'Can view payment', 7, 'view_payment'),
+(29, 'Can add people', 8, 'add_people'),
+(30, 'Can change people', 8, 'change_people'),
+(31, 'Can delete people', 8, 'delete_people'),
+(32, 'Can view people', 8, 'view_people'),
+(33, 'Can add post', 9, 'add_post'),
+(34, 'Can change post', 9, 'change_post'),
+(35, 'Can delete post', 9, 'delete_post'),
+(36, 'Can view post', 9, 'view_post'),
 (37, 'Can add account', 10, 'add_account'),
 (38, 'Can change account', 10, 'change_account'),
 (39, 'Can delete account', 10, 'delete_account'),
@@ -129,7 +129,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$120000$7uEaKJNP0ZsY$7nizbBeCQEzITPLm9JTBiryWi2WqQttQkYEX4dK512g=', '2019-03-30 14:17:28.783092', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2019-03-30 14:01:39.848025');
+(1, 'pbkdf2_sha256$150000$l6j6ncnCfYOo$mkqf1YBRq+zhR1XR9d+QzKxKC734+aM9fqY65ecWQvk=', '2019-04-14 16:15:43.583449', 1, 'nasir', 'Nasir', 'Khan', 'nasirkhancse@gmail.com', 1, 1, '2019-04-13 04:31:07.000000'),
+(2, 'pbkdf2_sha256$150000$3fRYQhJHWEk4$SSlewzrc5tsBcxO7h2iaJUphIdOB1TS23tpaK3Jl8uw=', '2019-04-14 11:08:48.087312', 0, 'taru', 'Taru', 'taru', 'taru@gmail.com', 0, 1, '2019-04-13 10:10:07.092007'),
+(3, 'pbkdf2_sha256$150000$L5uaQ4UnNOcJ$bRgJd5mD165ZOVlEKaqQlLPMqZp5FGLgHaz5pRPSrfk=', '2019-04-14 11:07:15.642329', 0, 'tomal', 'tomal', 'hasan', 'tomal@gmail.com', 0, 1, '2019-04-14 10:42:46.445262');
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,13 @@ CREATE TABLE `django_admin_log` (
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2019-03-30 14:48:37.548095', '1', 'admin', 1, '[{\"added\": {}}]', 7, 1);
+(1, '2019-04-13 04:32:04.818309', '1', 'nasir', 2, '[{\"changed\": {\"fields\": [\"first_name\", \"last_name\"]}}]', 4, 1),
+(2, '2019-04-13 10:12:33.864320', '2', 'taru', 2, '[{\"changed\": {\"fields\": [\"password\"]}}]', 4, 1),
+(3, '2019-04-14 10:49:02.554400', '4', 'tomal', 3, '', 8, 1),
+(4, '2019-04-14 10:49:02.558515', '2', 'taru', 3, '', 8, 1),
+(5, '2019-04-14 11:05:27.873032', '1', 'taru', 2, '[{\"changed\": {\"fields\": [\"nid\", \"date_of_birth\", \"phone\", \"image\"]}}]', 8, 1),
+(6, '2019-04-14 16:17:09.304741', '1', 'Help for building a tin shade house', 1, '[{\"added\": {}}]', 9, 1),
+(7, '2019-04-14 17:02:46.202404', '2', 'Help for Rouhingya tribal', 1, '[{\"added\": {}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -202,9 +210,9 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
 (10, 'SeekerApp', 'account'),
-(9, 'SeekerApp', 'payment'),
-(7, 'SeekerApp', 'people'),
-(8, 'SeekerApp', 'post'),
+(7, 'SeekerApp', 'payment'),
+(8, 'SeekerApp', 'people'),
+(9, 'SeekerApp', 'post'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -225,23 +233,26 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2019-03-30 13:49:59.542727'),
-(2, 'auth', '0001_initial', '2019-03-30 13:50:06.353487'),
-(3, 'admin', '0001_initial', '2019-03-30 13:50:09.247259'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2019-03-30 13:55:00.843879'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2019-03-30 13:55:00.922051'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2019-03-30 13:55:01.698872'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2019-03-30 13:55:02.312703'),
-(8, 'auth', '0003_alter_user_email_max_length', '2019-03-30 13:55:02.797743'),
-(9, 'auth', '0004_alter_user_username_opts', '2019-03-30 13:55:02.837002'),
-(10, 'auth', '0005_alter_user_last_login_null', '2019-03-30 13:55:03.202529'),
-(11, 'auth', '0006_require_contenttypes_0002', '2019-03-30 13:55:03.239708'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2019-03-30 13:55:03.295756'),
-(13, 'auth', '0008_alter_user_username_max_length', '2019-03-30 13:55:03.769139'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2019-03-30 13:55:04.322552'),
-(15, 'sessions', '0001_initial', '2019-03-30 13:55:04.670601'),
-(16, 'SeekerApp', '0001_initial', '2019-03-30 13:56:17.403431'),
-(17, 'SeekerApp', '0002_account', '2019-03-30 14:15:20.883632');
+(1, 'contenttypes', '0001_initial', '2019-04-12 08:13:41.628093'),
+(2, 'auth', '0001_initial', '2019-04-12 08:13:41.946726'),
+(3, 'SeekerApp', '0001_initial', '2019-04-12 08:13:43.191352'),
+(4, 'SeekerApp', '0002_account', '2019-04-12 08:13:43.888510'),
+(5, 'admin', '0001_initial', '2019-04-12 08:13:44.119288'),
+(6, 'admin', '0002_logentry_remove_auto_add', '2019-04-12 08:13:44.326951'),
+(7, 'admin', '0003_logentry_add_action_flag_choices', '2019-04-12 08:13:44.349140'),
+(8, 'contenttypes', '0002_remove_content_type_name', '2019-04-12 08:13:44.543283'),
+(9, 'auth', '0002_alter_permission_name_max_length', '2019-04-12 08:13:44.633808'),
+(10, 'auth', '0003_alter_user_email_max_length', '2019-04-12 08:13:44.755856'),
+(11, 'auth', '0004_alter_user_username_opts', '2019-04-12 08:13:44.771091'),
+(12, 'auth', '0005_alter_user_last_login_null', '2019-04-12 08:13:44.863565'),
+(13, 'auth', '0006_require_contenttypes_0002', '2019-04-12 08:13:44.871563'),
+(14, 'auth', '0007_alter_validators_add_error_messages', '2019-04-12 08:13:44.891420'),
+(15, 'auth', '0008_alter_user_username_max_length', '2019-04-12 08:13:45.012544'),
+(16, 'auth', '0009_alter_user_last_name_max_length', '2019-04-12 08:13:45.141539'),
+(17, 'auth', '0010_alter_group_name_max_length', '2019-04-12 08:13:45.264094'),
+(18, 'auth', '0011_update_proxy_permissions', '2019-04-12 08:13:45.291324'),
+(19, 'sessions', '0001_initial', '2019-04-12 08:13:45.338539'),
+(20, 'SeekerApp', '0003_auto_20190413_1136', '2019-04-13 05:36:57.737827');
 
 -- --------------------------------------------------------
 
@@ -260,7 +271,8 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('tmi22tupehgg25zhyw5vyot0pzkpzkav', 'ZGVjZTNhNmYzMTAxYzNiMDNjZjM1NjhhMzZiZjFkNWU0Y2UzOWZmYzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxOTg5NWVhMGM5OTk2NDU5NDVjMGM4NWE4YTlkMTAyYjc5MWZkMDYxIn0=', '2019-04-13 14:17:28.865792');
+('exjc5xnfclwo4so5vvqojp96qufzli5o', 'ZjNlMzhlMTg3NTM0NzEzMzY4YzBmN2Y3N2E1NDY0YzUxN2Y5ODhiNjp7fQ==', '2019-04-28 09:45:53.696567'),
+('ycad8j963hjvwnq59qj1nhk3j63xngis', 'Y2I4MTYzMmJjMjYwNTZmZDdlZjc0M2EwZTg5ZDdiZWRkZDRmZTNjNTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjYzk5NWI3MDU3NmMyMGU1NmM1ZDQ0OGExYmRlNjI1NmZhMTlmNDM1IiwidHlwZSI6bnVsbH0=', '2019-04-28 16:15:43.601803');
 
 -- --------------------------------------------------------
 
@@ -297,11 +309,11 @@ CREATE TABLE `seekerapp_payment` (
 
 CREATE TABLE `seekerapp_people` (
   `id` int(11) NOT NULL,
-  `nid` varchar(30) NOT NULL,
-  `date_of_birth` date NOT NULL,
-  `phone` varchar(20) NOT NULL,
+  `nid` varchar(30) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   `type` varchar(50) NOT NULL,
-  `image` varchar(100) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
   `name_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -310,7 +322,8 @@ CREATE TABLE `seekerapp_people` (
 --
 
 INSERT INTO `seekerapp_people` (`id`, `nid`, `date_of_birth`, `phone`, `type`, `image`, `name_id`) VALUES
-(1, '1995312487', '1995-03-30', '017542121121', 'donor', 'profile_picture/Ali-Ashraf.jpg', 1);
+(1, '654654', '2019-04-14', '6546546', 'donor', 'profile_picture/ybf_TLnv13X.jpg', 2),
+(3, NULL, NULL, NULL, 'donor', '', 3);
 
 -- --------------------------------------------------------
 
@@ -331,6 +344,14 @@ CREATE TABLE `seekerapp_post` (
   `name_id` int(11) NOT NULL,
   `verified_by_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seekerapp_post`
+--
+
+INSERT INTO `seekerapp_post` (`id`, `title`, `description`, `is_aproved`, `update`, `nid`, `image`, `amount`, `posted_on`, `name_id`, `verified_by_id`) VALUES
+(1, 'Help for building a tin shade house', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero ipsa pariatur eveniet repellat beatae similique voluptates atque dignissimos vitae eius incidunt error porro, libero, maiores aliquam, harum dicta quas fuga.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero ipsa pariatur eveniet repellat beatae similique voluptates atque dignissimos vitae eius incidunt error porro, libero, maiores aliquam, harum dicta quas fuga.', 0, 'No', '0125487565', 'post/ybf.jpg', '1200.00', '2019-04-14 16:17:09.301571', 1, 1),
+(2, 'Help for Rouhingya tribal', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero ipsa pariatur eveniet repellat beatae similique voluptates atque dignissimos vitae eius incidunt error porro, libero, maiores aliquam, harum dicta quas fuga.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero ipsa pariatur eveniet repellat beatae similique voluptates atque dignissimos vitae eius incidunt error porro, libero, maiores aliquam, harum dicta quas fuga.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero ipsa pariatur eveniet repellat beatae similique voluptates atque dignissimos vitae eius incidunt error porro, libero, maiores aliquam, harum dicta quas fuga.', 1, 'Partially get help', '478596', 'post/56403719_10213716986391047_5747054270868357120_n.jpg', '4000.00', '2019-04-14 17:02:46.201407', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -465,7 +486,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -483,7 +504,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -495,7 +516,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `seekerapp_account`
@@ -513,13 +534,13 @@ ALTER TABLE `seekerapp_payment`
 -- AUTO_INCREMENT for table `seekerapp_people`
 --
 ALTER TABLE `seekerapp_people`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `seekerapp_post`
 --
 ALTER TABLE `seekerapp_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

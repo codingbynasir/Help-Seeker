@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 class People(models.Model):
     name=models.ForeignKey(User, on_delete=models.CASCADE)
-    nid=models.CharField(max_length=30)
-    date_of_birth=models.DateField()
-    phone=models.CharField(max_length=20)
+    nid=models.CharField(max_length=30, null=True, blank=True)
+    date_of_birth=models.DateField(null=True, blank=True)
+    phone=models.CharField(max_length=20, null=True, blank=True)
     type=models.CharField(max_length=50, choices=(("donor","Donor"),("seeker","Seeker"),("volunteer","Volunteer")))
-    image=models.ImageField(upload_to="profile_picture")
+    image=models.ImageField(upload_to="profile_picture", null=True, blank=True)
 
     class Meta:
         verbose_name_plural="People"

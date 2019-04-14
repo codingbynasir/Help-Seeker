@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title %}Create a new account for services{% endblock %}
+{% block stylesheet %}
+    <style>
+    .wrapper {
+    margin-top: 95px;
+}
+    nav.navbar {
+    background-color: #1C2331;
+}
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <!-- Material form login -->
+                    <div class="card">
+
+                      <h5 class="card-header info-color white-text text-center py-4">
+                        <strong>Registration</strong>
+                      </h5>
+
+                      <!--Card content-->
+                      <div class="card-body px-lg-5 pt-0">
+                        {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                    <div {% if message.tags %} class="{{ message.tags }} alert-dismissible fade show"{% endif %}  role="alert">{{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button></div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <!-- Form -->
+                        <form action="" method="POST" class="text-center" style="color: #757575;">
+                            {% csrf_token %}
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="text" name="first_name" id="id_first_name" class="form-control" required>
+                                <label for="id_first_name">First name</label>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="text" name="last_name" id="id_last_name" class="form-control" required>
+                                <label for="id_last_name">Last name</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="text" name="username" id="id_username" class="form-control" required>
+                                <label for="id_username">Username</label>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="email" name="email" id="id_email" class="form-control" required>
+                                <label for="id_email">Email</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="password" name="password1" id="id_password1" class="form-control" required>
+                                <label for="id_password1">Password</label>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="md-form">
+                                <input type="password" name="password2" id="id_password2" class="form-control" required>
+                                <label for="id_password2">Re-password</label>
+                              </div>
+                            </div>
+                          </div>
+                          <select class="form-control" name="type" required>
+                            <option value="">Select an account type</option>
+                            <option value="donor">Donor</option>
+                            <option value="seeker">Seeker</option>
+                            <option value="volunteer">Volunteer</option>
+                        </select>
+
+                          
+                          <!-- Sign in button -->
+                          <button class="btn btn-outline-info btn-rounded my-4 waves-effect z-depth-0">Register now</button>
+
+                          <!-- Register -->
+                          <p>Already registered?
+                            <a href="{% url 'people:login' %}">Login now</a>
+                          </p>
+
+                        </form>
+                        <!-- Form -->
+
+                      </div>
+
+                    </div>
+                    <!-- Material form login -->
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+
+{% endblock %}
