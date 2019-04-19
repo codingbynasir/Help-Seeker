@@ -4,6 +4,7 @@ app_name="PeopleApp"
 urlpatterns = [
     path('register', views.getRegister.as_view(), name="register"),
     path('update', views.getUpdate.as_view(), name="update"),
+    path('profile', views.getProfile.as_view(), name="profile"),
     path('login', views.getLogin.as_view(), name="login"),
     path('logout', views.getLogout, name="logout"),
 ]

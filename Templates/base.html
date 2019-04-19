@@ -55,13 +55,27 @@
         </ul>
 
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
+        <ul class="navbar-nav navbar-right">
         {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link border border-light rounded">
+                      <i class="fab fa-dashboard"></i>Dashboard
+                    </a>
+                </li>
+            {% endif %}
+            {% if request.session.type == "seeker" %}
+                <li class="nav-item">
+                    <a href="{% url 'seeker:createseek' %}" class="nav-link">
+                      <i class="fa fa-edit"></i>Create a post
+                    </a>
+                </li>
+            {% endif %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdown-link" data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">{{ request.user.get_full_name }}</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdown-link">
-                  <a class="dropdown-item" href="#">View profile</a>
+                  <a class="dropdown-item" href="{% url 'people:profile' %}">View profile</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="{% url 'people:logout' %}">Log Out</a>
                 </div>

@@ -39,7 +39,7 @@ class getRegister(View):
         if form.is_valid():
             form.save()
             usr=get_object_or_404(User, username=username)
-            instance=People.objects.create(name=usr, type=account_type)
+            instance=People.objects.create(name=usr,nid="", type=account_type)
             instance.save()
             messages.success(request, "Registration successfully completed. Login now.")
             return redirect("people:register")
@@ -51,7 +51,7 @@ class getUpdate(View):
         if request.user.is_authenticated:
             if request.session['type']:
                 try:
-                    instance=get_object_or_404(People, name__username=request.user.username)
+                    instance=get_object_or_404(People, name=request.user.id)
                     form=ProfileUpdateForm(instance=instance)
                     return render(request, 'forms/profile_update.html', {"form": form})
                 except Exception as e:
@@ -61,7 +61,7 @@ class getUpdate(View):
         else:
             return redirect('people:login')
     def post(self, request):
-        user=get_object_or_404(User, username=request.user.username)
+        user=get_object_or_404(People, name=request.user.id)
         form=ProfileUpdateForm(request.POST or None, request.FILES or None, instance=user)
         if form.is_valid():
             ins=form.save(commit=False)
@@ -71,6 +71,26 @@ class getUpdate(View):
             messages.error(request, "Profile information is not updated")
         return redirect('people:update')
 
+class getProfile(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            if request.session['type']:
+                try:
+                    profile=get_object_or_404(People, name=request.user.id)
+                    context={
+                        "profile": profile
+                    }
+                    return render(request, "profile.html", context)
+                except:
+                    return redirect('people:update')
+            else:
+                raise Http404
+        else:
+            return redirect('people:login')
+
+
 def getLogout(request):
     logout(request)
     return redirect('seeker:index')
+
+
